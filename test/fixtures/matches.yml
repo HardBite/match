@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  host: MyString
+  host_score: 1
+  guest: MyString
+  guest_score: 1
+  day: 2014-07-01
+  voted: 1
+  rating: 1.5
+
+two:
+  host: MyString
+  host_score: 1
+  guest: MyString
+  guest_score: 1
+  day: 2014-07-01
+  voted: 1
+  rating: 1.5

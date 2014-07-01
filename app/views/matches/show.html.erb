@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Host:</strong>
+  <%= @match.host %>
+</p>
+
+<p>
+  <strong>Host score:</strong>
+  <%= @match.host_score %>
+</p>
+
+<p>
+  <strong>Guest:</strong>
+  <%= @match.guest %>
+</p>
+
+<p>
+  <strong>Guest score:</strong>
+  <%= @match.guest_score %>
+</p>
+
+<p>
+  <strong>Day:</strong>
+  <%= @match.day %>
+</p>
+
+<p>
+  <strong>Voted:</strong>
+  <%= @match.voted %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @match.rating %>
+</p>
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>
