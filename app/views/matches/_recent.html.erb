@@ -1,0 +1,19 @@
+    <% @matches.each do |match| %>
+<table class = "table">
+  <tbody>
+      <tr>
+        <td> <%= link_to "#{match.host}  : #{match.guest}", match %> <span class="badge"><%= match.rating.to_f.round(2) %> </span > </td>
+           </tr>
+           <tr>
+             <td> <h2 ><%= match.host_score %> : <%= match.guest_score %>  </h2>
+              </td>
+                </tr>
+           <tr>
+             <td> <small ><i> Game date <%= match.day %> </i> </small>
+
+</td>
+      </tr>
+  </tbody>
+</table>
+    <% end %>
+
