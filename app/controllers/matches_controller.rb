@@ -26,8 +26,6 @@ class MatchesController < ApplicationController
   # POST /matches.json
   def create
     @match = Match.new(match_params)
-    @match.voted ||= 0
-    @match.rating ||= 0
    # @match.photos.build
     binding.pry
     respond_to do |format|
@@ -49,8 +47,8 @@ binding.pry
     
 v = params[:match][:rate].to_i
   if v 
-    @match.rating = (@match.voted*@match.rating + v)/(@match.voted+1)
-    @match.voted = @match.voted + 1
+    @match.rating = (@match.voted.to_i*@match.rating.to_f + v)/(@match.voted.to_i+1)
+    @match.voted = @match.voted.to_i + 1
   end
      
     respond_to do |format|

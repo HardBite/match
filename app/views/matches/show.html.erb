@@ -37,7 +37,7 @@
 
 <p>
   <strong>Rating:</strong>
-  <%= @match.rating %>
+  <%= @match.rating.to_f.round(2) %>
 </p>
 
 <%for photo in @match.photos%>
