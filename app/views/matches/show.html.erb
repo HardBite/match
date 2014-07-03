@@ -31,7 +31,7 @@
 </p>
 
 <p>
-  <strong>Voted:</strong>
+  <strong>Votes:</strong>
   <%= @match.voted %>
 </p>
 
@@ -40,6 +40,8 @@
   <%= @match.rating.to_f.round(2) %>
 </p>
 
+
+
 <%for photo in @match.photos%>
   <%= image_tag photo.image_url.to_s%>
 <%end%>
@@ -47,3 +49,9 @@
 
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>
+<hr>
+<div class = "well col-md-3" >
+  <%= render "rating"%>
+</div>
+
+
