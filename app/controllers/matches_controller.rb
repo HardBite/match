@@ -26,6 +26,8 @@ class MatchesController < ApplicationController
   # POST /matches.json
   def create
     @match = Match.new(match_params)
+    @match.voted ||= 0
+    @match.rating ||= 0
    # @match.photos.build
     binding.pry
     respond_to do |format|
@@ -42,6 +44,15 @@ class MatchesController < ApplicationController
   # PATCH/PUT /matches/1
   # PATCH/PUT /matches/1.json
   def update
+    
+binding.pry
+    
+v = params[:match][:rate].to_i
+  if v 
+    @match.rating = (@match.voted*@match.rating + v)/(@match.voted+1)
+    @match.voted = @match.voted + 1
+  end
+     
     respond_to do |format|
       if @match.update(match_params)
         format.html { redirect_to @match, notice: 'Match was successfully updated.' }
@@ -71,6 +82,6 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:host, :host_score, :guest, :guest_score, :day, :description, :voted, :rating, photo_attributes: [:image, :id, :match_id])
+      params.require(:match).permit(:host, :host_score, :guest, :guest_score, :day, :description, :rate, photo_attributes: [:image, :id, :match_id])
     end
 end
