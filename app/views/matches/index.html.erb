@@ -1,4 +1,7 @@
-<h1>Listing matches</h1>
+      
+      <div class = "col-xs-8">
+
+<h1>Matches </h1>
 
 <table class = "table table-striped">
   <thead>
@@ -32,6 +35,17 @@
   </tbody>
 </table>
 
+<%= link_to 'New Match', new_match_path %>
+
+</div>
+
 <br>
 
-<%= link_to 'New Match', new_match_path %>
+
+    <div class=" col-xs-4 panel panel-default">
+      <div class = "panel-heading"> Recently added matches </div>
+      <div class = "panel-body">
+        <%=render 'recent'%>
+        </div>
+      </div>
+
