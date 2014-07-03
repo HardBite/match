@@ -1,4 +1,4 @@
-<%= form_for(@match) do |f| %>
+<%= form_for @match, :html => {:class => "form-inline", :multipart => "true"} do |f| %>
   <% if @match.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
@@ -11,34 +11,44 @@
     </div>
   <% end %>
 
-  <div class="field">
+
+
+
+  <div class="input-group">
     <%= f.label :host %><br>
     <%= f.text_field :host %>
   </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :host_score %><br>
     <%= f.number_field :host_score %>
   </div>
-  <div class="field">
-    <%= f.label :guest %><br>
-    <%= f.text_field :guest %>
-  </div>
-  <div class="field">
+  <div class="input-group">
     <%= f.label :guest_score %><br>
     <%= f.number_field :guest_score %>
+  </div>
+  <div class="input-group">
+    <%= f.label :guest %><br>
+    <%= f.text_field :guest %>
   </div>
   <div class="field">
     <%= f.label :day %><br>
     <%= f.date_select :day %>
   </div>
+
   <div class="field">
-    <%= f.label :voted %><br>
-    <%= f.number_field :voted %>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
   </div>
-  <div class="field">
-    <%= f.label :rating %><br>
-    <%= f.text_field :rating %>
-  </div>
+
+   <%= f.fields_for :photo do |builder| %>
+     <div class="field">
+       <fieldset>
+       <%= builder.label :image %><br>
+       <%= builder.file_field :image, :multiple => true, name: "photos[image][]" %>
+       <fieldset>
+     </div>
+   <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

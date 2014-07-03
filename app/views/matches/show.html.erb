@@ -26,6 +26,11 @@
 </p>
 
 <p>
+  <strong>Description:</strong>
+  <%= @match.description %>
+</p>
+
+<p>
   <strong>Voted:</strong>
   <%= @match.voted %>
 </p>
@@ -34,6 +39,11 @@
   <strong>Rating:</strong>
   <%= @match.rating %>
 </p>
+
+<%for photo in @match.photos%>
+  <%= image_tag photo.image_url.to_s%>
+<%end%>
+
 
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>

@@ -1,0 +1,39 @@
+class PhotosController < ApplicationController
+  before_action :set_photo, only: [:show, :edit, :update, :destroy]
+
+  # GET /matches
+  # GET /matches.json
+  def index
+    @matches = Photos.all
+  end
+
+  # GET /matches/1
+  # GET /matches/1.json
+  def show
+  end
+
+  # GET /matches/new
+  def new
+    @photo = Photo.new
+    binding.pry
+  end
+
+  # GET /matches/1/edit
+  def edit
+  end
+
+  def create
+    Photo.create(photo_params)
+  end
+
+  def set_match
+      @photo = Photo.find(params[:id])
+  end
+
+private
+
+  def photo_params
+      params.require(:photo).permit(:image)
+    end
+
+end

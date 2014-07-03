@@ -15,6 +15,7 @@ class MatchesController < ApplicationController
   # GET /matches/new
   def new
     @match = Match.new
+    #    @match.photos.build
   end
 
   # GET /matches/1/edit
@@ -25,7 +26,8 @@ class MatchesController < ApplicationController
   # POST /matches.json
   def create
     @match = Match.new(match_params)
-
+   # @match.photos.build
+    binding.pry
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
@@ -69,6 +71,6 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:host, :host_score, :guest, :guest_score, :day, :voted, :rating)
+      params.require(:match).permit(:host, :host_score, :guest, :guest_score, :day, :description, :voted, :rating, photo_attributes: [:image, :id, :match_id])
     end
 end
