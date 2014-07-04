@@ -1,7 +1,4 @@
-<%n = 0%>
-<% 3.times do%>
-  <%match =  @matches[n] %>
-  <%n = n+1 %>
+<% @recent.each do |match| %>
 <table class = "table">
   <tbody>
       <tr>

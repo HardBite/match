@@ -1,15 +1,22 @@
 class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
+  before_action :recent
 
   # GET /matches
   # GET /matches.json
   def index
-    @matches = Match.all.order(:created_at => :desc)
+    @matches = Match.all.order(:created_at => :desc).page(params[:page]).per(5)
+     end
+
+  def recent
+    @recent = Match.all.order(:created_at => :desc).limit(3)
   end
+
 
   # GET /matches/1
   # GET /matches/1.json
   def show
+  
   end
 
   # GET /matches/new
