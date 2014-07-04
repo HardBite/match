@@ -9,19 +9,22 @@
 <body>
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= link_to "Home", :root %> |
-     <%= link_to "Add new match", new_match_path %> 
-     
-     <p class="text-right">    
-     <% if user_signed_in? %>
+     | <%= link_to "Home", :root %> |
+         
+         <% if user_signed_in? %>
+          <%= link_to "Add new match", new_match_path %> |
+           <p class="text-right">    
           Logged in as <strong><%= current_user.email %></strong>.
           <%= link_to 'Edit profile', edit_user_registration_path %> |
           <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+          </p>
         <% else %>
+          <p class="text-right"> 
           <%= link_to "Sign up", new_user_registration_path %> |
           <%= link_to "Login", new_user_session_path %>
+          </p>
         <% end %>
-      </p>
+      
 
     </div>
   </div>

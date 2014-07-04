@@ -27,7 +27,6 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
    # @match.photos.build
-    binding.pry
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
@@ -43,7 +42,6 @@ class MatchesController < ApplicationController
   # PATCH/PUT /matches/1.json
   def update
     
-binding.pry
     
 v = params[:match][:rate].to_i
   if v 
