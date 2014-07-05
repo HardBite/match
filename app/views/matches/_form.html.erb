@@ -40,17 +40,6 @@
     <%= f.text_field :description %>
   </div>
 
-
-
-   <%= f.fields_for :photo do |builder| %>
-     <div class="field">
-       <fieldset>
-       <%= builder.label :image %><br>
-       <%= builder.file_field :image, :multiple => true, name: "photos[image][]" %>
-       <fieldset>
-     </div>
-   <% end %>
-
   <div class="actions">
     <%= f.submit %>
   </div>

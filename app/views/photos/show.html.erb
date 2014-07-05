@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+
+  <%= image_tag @photo.image_url.to_s%>
+
+  <% if user_signed_in? %>
+    <%= link_to 'Add photo to match', new_photo_path %>
+    
+<%end%>
+<hr>
+
+

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :matches
+  resources :matches do
+      resources :photos, :only => [:create, :destroy, :show, :new]
+  end
   root :to => "matches#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
