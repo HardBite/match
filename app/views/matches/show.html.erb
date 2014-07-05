@@ -40,11 +40,12 @@
   <%= @match.rating.to_f.round(2) %>
 </p>
 
-  <%#binding.pry %>
 
 
 <%for photo in @match.photos%>
-  <%= image_tag photo.image_url.to_s%>
+  
+  <%= image_tag photo.image_url(:thumb).to_s%>
+
 <%end%>
 
   <% if user_signed_in? %>

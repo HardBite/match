@@ -22,13 +22,11 @@ class PhotosController < ApplicationController
   end
 
   def create
-       #photo_params[:match_id] = params[:match_id]
       @photo = Photo.new(photo_params)
       @photo[:match_id] = params[:match_id]  
-      binding.pry
   respond_to do |format|
       if @photo.save
-        format.html { redirect_to :root, notice: 'Photo was successfully added.' }
+        format.html { redirect_to "/matches/#{params[:match_id]}", notice: 'Photo was successfully added.' }
         format.json { render :show, status: :created, location: @photo }
       else
         format.html { render :new }
