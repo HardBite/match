@@ -1,20 +1,15 @@
-<%= form_for @match do |f| %>
-  <% if @match.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
 
-      <ul>
-      <% @match.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <%= f.label :rate %>
-  <%= f.select(:rate, options_for_select([['none', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5] ]) )  %> 
+<% unless voted %>
+
+<%= form_for(@user_vote, url: {:action=>"create", :controller=>"user_votes", :match_id => "#{params[:id]}"}) do |f| %>
+  <%= f.label :vote %>
+  <%= f.select(:vote, options_for_select([['none', 0], ['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5] ]) )  %> 
 
    <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+<%else%>
+  Your rate for this match is <%=voted%>
+<%end%>

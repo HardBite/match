@@ -2,6 +2,10 @@ class MatchesController < ApplicationController
   before_action :set_match, only: [:show, :edit, :update, :destroy]
   before_action :recent
 
+
+
+
+
   # GET /matches
   # GET /matches.json
   def index
@@ -16,7 +20,7 @@ class MatchesController < ApplicationController
   # GET /matches/1
   # GET /matches/1.json
   def show
-  
+    @user_vote = UserVote.new 
   end
 
   # GET /matches/new
@@ -50,11 +54,7 @@ class MatchesController < ApplicationController
   def update
     
     
-v = params[:match][:rate].to_i
-  if v 
-    @match.rating = (@match.voted.to_i*@match.rating.to_f + v)/(@match.voted.to_i+1)
-    @match.voted = @match.voted.to_i + 1
-  end
+
      
     respond_to do |format|
       if @match.update(match_params)
