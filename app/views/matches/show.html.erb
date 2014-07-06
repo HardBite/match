@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Host:</strong>
-  <%= @match.host %>
-</p>
+ <div class ="row col-md-3">
+   <p>
+    <strong>Host:</strong>
+    <%= @match.host %>
+   </p>
 
 <p>
   <strong>Host score:</strong>
@@ -35,24 +36,52 @@
   <strong>Rating:</strong>
   <%= @match.rating.to_f.round(2) %>
 </p>
-
-
-
-<%for photo in @match.photos%>
-  
-  <%= image_tag photo.image_url(:thumb).to_s%>
-
-<%end%>
+   <div class = "well" >
+    <%= render "rating"%>
+   </div>
+   <br>
 
   <% if user_signed_in? %>
-    <%= link_to 'Add photo to match', new_match_photo_path(@match) %>
+    <%= link_to 'Add photo to match', new_match_photo_path(@match) %> |
     
     <%= link_to 'Edit', edit_match_path(@match) %> |
 <%end%>
 <%= link_to 'Back', matches_path %>
-<hr>
-<div class = "well col-md-3" >
-  <%= render "rating"%>
-</div>
+
+</div> 
 
 
+<div id="carousel-example-generic" class="carousel slide col-md-7 col-md-offset-1" data-ride="carousel" >
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img  src="/football.jpg" class="img-responsive" alt="...">
+      <div class="carousel-caption">
+        
+      </div>
+    </div>
+          <%for photo in @match.photos%>
+        <div class="item">
+
+        <img src="<%= photo.image_url.to_s%>" class="img-responsive" alt="...">
+      </div>
+
+      <%end%>
+      
+         </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  </div>
